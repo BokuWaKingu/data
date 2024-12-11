@@ -1,12 +1,15 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Outlet } from "react-router-dom";
 import LoginPage from "./pages/login/page";
+import HomePage from "./pages/home/page";
+import { Layout } from "@/components/Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-    <Route path="/" element={<LoginPage />} />
-    </>
+    <Route element={<Layout><Outlet /></Layout>}>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<HomePage />} />
+    </Route>
   )
 );
 
